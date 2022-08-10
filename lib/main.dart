@@ -1,3 +1,5 @@
+import './screens/volume_screen.dart';
+import './screens/weight_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,18 +16,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int currentIndex = 0;
   final screens = const [
-    Center(child: Text('Weight')),
-    Center(child: Text('Volume')),
+    WeightScreen(),
+    VolumeScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: screens[currentIndex],
-        appBar: AppBar(
-          backgroundColor: Colors.amber[800],
-          title: const Text('Better Price'),
+        body: IndexedStack(
+          index: currentIndex,
+          children: screens,
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
