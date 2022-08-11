@@ -13,7 +13,6 @@ class WeightState extends State<WeightScreen> {
     return Scaffold(
       body: const Center(child: Text('Weight')),
       appBar: AppBar(
-        backgroundColor: Colors.amber[800],
         title: const Text('Weight'),
       ),
     );

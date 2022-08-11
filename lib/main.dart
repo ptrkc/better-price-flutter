@@ -23,6 +23,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(useMaterial3: true, brightness: Brightness.light),
+      darkTheme: ThemeData(useMaterial3: true, brightness: Brightness.dark),
+      themeMode: ThemeMode.system,
       home: Scaffold(
         body: IndexedStack(
           index: currentIndex,
@@ -40,7 +43,6 @@ class _MyAppState extends State<MyApp> {
               label: 'Volume',
             ),
           ],
-          selectedItemColor: Colors.amber[800],
           onTap: (index) {
             setState(() {
               currentIndex = index;
