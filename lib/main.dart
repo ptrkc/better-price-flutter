@@ -23,8 +23,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true, brightness: Brightness.light),
-      darkTheme: ThemeData(useMaterial3: true, brightness: Brightness.dark),
+      theme: ThemeData(
+          colorSchemeSeed: Colors.pink,
+          useMaterial3: true,
+          brightness: Brightness.light),
+      darkTheme: ThemeData(
+          colorSchemeSeed: Colors.pink,
+          useMaterial3: true,
+          brightness: Brightness.dark),
       themeMode: ThemeMode.system,
       home: Scaffold(
         body: IndexedStack(

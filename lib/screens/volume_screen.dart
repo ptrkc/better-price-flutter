@@ -10,6 +10,7 @@ class VolumeScreen extends StatefulWidget {
 
 class _VolumeScreenState extends State<VolumeScreen> {
   List<String> products = ['prod1', 'prod2'];
+  List<String> units = ['ml', 'l'];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class _VolumeScreenState extends State<VolumeScreen> {
         itemCount: products.length,
         itemBuilder: (context, index) {
           final product = products[index];
-          return ProductCard(product: product);
+          return ProductCard(product: product, units: units);
         },
       ),
     );
