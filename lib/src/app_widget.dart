@@ -13,9 +13,9 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   int currentIndex = 0;
-  final screens = [
+  final screens = const [
     WeightScreen(),
-    const VolumeScreen(),
+    VolumeScreen(),
   ];
 
   @override

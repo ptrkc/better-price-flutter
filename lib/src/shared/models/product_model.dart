@@ -1,14 +1,15 @@
 class ProductModel {
-  String name;
+  int id;
   String unit;
+  String name = '';
   double quantity = 0;
   double price = 0;
 
   ProductModel(
-    this.name,
+    this.id,
     this.unit,
   ) {
-    name = 'Produto $name';
+    id;
     unit;
   }
 }

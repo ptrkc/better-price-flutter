@@ -3,9 +3,9 @@ import 'package:better_price_flutter/src/shared/models/product_model.dart';
 import 'package:better_price_flutter/src/widgets/product_card.dart';
 
 class WeightScreen extends StatelessWidget {
-  WeightScreen({Key? key}) : super(key: key);
+  const WeightScreen({Key? key}) : super(key: key);
 
-  final List<ProductModel> products = [ProductModel('1', 'g')];
+  // final List<ProductModel> products = [ProductModel(1, 'g')];
   final List<String> units = const ['g', 'kg'];
 
   @override
@@ -14,13 +14,17 @@ class WeightScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Weight'),
       ),
-      body: ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          final product = products[index];
-          return ProductCard(product: product, units: units);
-        },
-      ),
+      // body: ListView.builder(
+      //   itemCount: products.length,
+      //   itemBuilder: (context, index) {
+      //     final product = products[index];
+      //     return ProductCard(
+      //       product: product,
+      //       units: units,
+      //       index: index,
+      //     );
+      //   },
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),

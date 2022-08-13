@@ -19,7 +19,8 @@ class VolumeScreen extends StatelessWidget {
         itemCount: controller.products.length,
         itemBuilder: (context, index) {
           final product = controller.products[index];
-          return ProductCard(product: product, units: units);
+          return ProductCard(
+              product: product, units: units, key: ValueKey(product.id));
         },
       ),
       floatingActionButton: FloatingActionButton(
