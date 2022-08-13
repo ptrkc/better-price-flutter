@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import '../widgets/product_card.dart';
+import 'package:better_price_flutter/src/widgets/product_card.dart';
 
-class VolumeScreen extends StatefulWidget {
+class VolumeScreen extends StatelessWidget {
   const VolumeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<VolumeScreen> createState() => _VolumeScreenState();
-}
-
-class _VolumeScreenState extends State<VolumeScreen> {
-  List<String> products = ['prod1', 'prod2'];
-  List<String> units = ['ml', 'l'];
+  final List<String> products = const ['prod1', 'prod2'];
+  final List<String> units = const ['ml', 'l'];
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +19,10 @@ class _VolumeScreenState extends State<VolumeScreen> {
           final product = products[index];
           return ProductCard(product: product, units: units);
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   const ProductCard({Key? key, required this.product, required this.units})
       : super(key: key);
 
   final String product;
   final List<String> units;
 
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,8 +21,7 @@ class _ProductCardState extends State<ProductCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Produto ${widget.product}',
-                    style: const TextStyle(fontSize: 25)),
+                Text('Produto $product', style: const TextStyle(fontSize: 25)),
                 Row(
                   children: [
                     SizedBox(
@@ -47,7 +41,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     Row(
                       children: [
-                        for (var unit in widget.units)
+                        for (var unit in units)
                           OutlinedButton(
                             child: Text(unit),
                             onPressed: () {},

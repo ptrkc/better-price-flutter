@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import '../widgets/product_card.dart';
+import 'package:better_price_flutter/src/widgets/product_card.dart';
 
-class WeightScreen extends StatefulWidget {
+class WeightScreen extends StatelessWidget {
   const WeightScreen({Key? key}) : super(key: key);
 
-  @override
-  State<WeightScreen> createState() => WeightState();
-}
-
-class WeightState extends State<WeightScreen> {
-  List<String> products = ['prod1', 'prod2'];
-  List<String> units = ['g', 'kg'];
+  final List<String> products = const ['prod1', 'prod2'];
+  final List<String> units = const ['g', 'kg'];
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +19,10 @@ class WeightState extends State<WeightScreen> {
           final product = products[index];
           return ProductCard(product: product, units: units);
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }
