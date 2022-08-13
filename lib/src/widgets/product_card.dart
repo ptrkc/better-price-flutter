@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:better_price_flutter/src/shared/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({Key? key, required this.product, required this.units})
       : super(key: key);
 
-  final String product;
+  final ProductModel product;
   final List<String> units;
 
   @override
@@ -21,7 +22,8 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Produto $product', style: const TextStyle(fontSize: 25)),
+                Text('Produto ${product.name}',
+                    style: const TextStyle(fontSize: 25)),
                 Row(
                   children: [
                     SizedBox(

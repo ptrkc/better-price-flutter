@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:better_price_flutter/src/shared/models/product_model.dart';
 import 'package:better_price_flutter/src/widgets/product_card.dart';
 
 class WeightScreen extends StatelessWidget {
-  const WeightScreen({Key? key}) : super(key: key);
+  WeightScreen({Key? key}) : super(key: key);
 
-  final List<String> products = const ['prod1', 'prod2'];
+  final List<ProductModel> products = [ProductModel('1', 'g')];
   final List<String> units = const ['g', 'kg'];
 
   @override
