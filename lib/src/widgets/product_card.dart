@@ -1,3 +1,4 @@
+import 'package:better_price_flutter/src/widgets/controlled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -33,15 +34,18 @@ class ProductCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 180.0,
-                      child: TextField(
+                      child: ControlledTextField(
+                        text: product.name.toString(),
+                        onChanged: (value) => product.name = value,
                         decoration: InputDecoration(
+                          isDense: true,
                           border: const OutlineInputBorder(),
                           labelText: 'Product ${product.id}',
                         ),
                       ),
                     ),
                     OutlinedButton(
-                      child: Text('Delete ${product.id}'),
+                      child: const Text('Delete'),
                       onPressed: () => controller.removeById(product.id),
                     ),
                   ],
@@ -50,7 +54,10 @@ class ProductCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 180.0,
-                      child: TextField(
+                      child: ControlledTextField(
+                        text: product.quantity.toString(),
+                        onChanged: (value) =>
+                            product.quantity = double.parse(value),
                         keyboardType: const TextInputType.numberWithOptions(
                             decimal: true),
                         inputFormatters: [
@@ -59,7 +66,8 @@ class ProductCard extends StatelessWidget {
                         ],
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Quantity',
+                          labelText: 'Quantity*',
+                          isDense: true,
                         ),
                       ),
                     ),
@@ -74,7 +82,9 @@ class ProductCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                TextField(
+                ControlledTextField(
+                  text: product.price.toString(),
+                  onChanged: (value) => product.price = double.parse(value),
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   inputFormatters: [
@@ -82,8 +92,9 @@ class ProductCard extends StatelessWidget {
                   ],
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Price',
+                    labelText: 'Price*',
                     prefixText: '\$ ',
+                    isDense: true,
                   ),
                 ),
               ],

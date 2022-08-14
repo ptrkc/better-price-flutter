@@ -13,6 +13,10 @@ class VolumeController extends ChangeNotifier {
 
   removeById(int id) {
     products.removeWhere((prod) => prod.id == id);
+    if (products.isEmpty) {
+      count = 0;
+      return add();
+    }
     notifyListeners();
   }
 }
