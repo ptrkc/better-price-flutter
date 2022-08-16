@@ -1,9 +1,9 @@
-import 'package:better_price_flutter/src/widgets/controlled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:better_price_flutter/src/shared/models/product_model.dart';
 import 'package:better_price_flutter/src/volume/volume_controller.dart';
+import 'package:better_price_flutter/src/widgets/controlled_text_field.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -36,7 +36,8 @@ class ProductCard extends StatelessWidget {
                       width: 180.0,
                       child: ControlledTextField(
                         text: product.name.toString(),
-                        onChanged: (value) => product.name = value,
+                        onChanged: (value) =>
+                            controller.setNameById(product.id, value),
                         decoration: InputDecoration(
                           isDense: true,
                           border: const OutlineInputBorder(),
@@ -57,7 +58,7 @@ class ProductCard extends StatelessWidget {
                       child: ControlledTextField(
                         text: product.quantity.toString(),
                         onChanged: (value) =>
-                            product.quantity = double.parse(value),
+                            controller.setQuantityById(product.id, value),
                         keyboardType: const TextInputType.numberWithOptions(
                             decimal: true),
                         inputFormatters: [
@@ -71,20 +72,19 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Row(
-                      children: [
-                        for (var unit in units)
-                          OutlinedButton(
-                            child: Text(unit),
-                            onPressed: () {},
-                          ),
-                      ],
-                    ),
+                    ToggleButtons(
+                      isSelected:
+                          units.map((unit) => product.unit == unit).toList(),
+                      children: units.map((unit) => Text(unit)).toList(),
+                      onPressed: (int index) =>
+                          controller.setUnitById(product.id, units[index]),
+                    )
                   ],
                 ),
                 ControlledTextField(
                   text: product.price.toString(),
-                  onChanged: (value) => product.price = double.parse(value),
+                  onChanged: (value) =>
+                      controller.setPriceById(product.id, value),
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   inputFormatters: [
@@ -97,6 +97,7 @@ class ProductCard extends StatelessWidget {
                     isDense: true,
                   ),
                 ),
+                Text('Price per liter: ${controller.pricePerLiter(product.id)}')
               ],
             ),
           ),

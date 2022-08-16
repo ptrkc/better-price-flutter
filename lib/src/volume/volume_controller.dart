@@ -19,4 +19,36 @@ class VolumeController extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  setNameById(int id, String value) {
+    var product = products.firstWhere((prod) => prod.id == id);
+    product.name = value;
+    notifyListeners();
+  }
+
+  setQuantityById(int id, String value) {
+    var product = products.firstWhere((prod) => prod.id == id);
+    product.quantity = double.tryParse(value) ?? 0;
+    notifyListeners();
+  }
+
+  setPriceById(int id, String value) {
+    var product = products.firstWhere((prod) => prod.id == id);
+    product.price = double.tryParse(value) ?? 0;
+    notifyListeners();
+  }
+
+  setUnitById(int id, String value) {
+    var product = products.firstWhere((prod) => prod.id == id);
+    product.unit = value;
+    notifyListeners();
+  }
+
+  pricePerLiter(int id) {
+    final product = products.firstWhere((prod) => prod.id == id);
+    final liter =
+        product.unit == 'ml' ? product.quantity / 1000 : product.quantity;
+    final finalPrice = product.price / liter;
+    return finalPrice.isNaN ? '' : 'R\$ ${finalPrice.toStringAsFixed(3)}';
+  }
 }
